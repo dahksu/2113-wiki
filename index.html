@@ -61,7 +61,7 @@
         }
         .main-content {
             display: flex;
-            flex-direction: column; /* 默认垂直排列，手机版和电脑版 */
+            flex-direction: column; /* 默认垂直排列，手机版 */
             gap: 20px;
         }
         .section {
@@ -114,6 +114,22 @@
         #search-results .no-result {
             padding: 10px;
             color: #666;
+        }
+
+        /* 电脑版布局 */
+        @media (min-width: 768px) {
+            .main-content {
+                flex-direction: row;
+                align-items: flex-start; /*  确保内容区域顶部对齐  */
+            }
+            img {
+                width: 30%;
+                margin-right: 20px; /*  图片右边距  */
+                margin-bottom: 0; /* 移除底部间距，图片在左边时不需要 */
+            }
+            .section {
+                width: calc(70% - 20px);  /* 内容区域占70%，减去图片右边距 */
+            }
         }
     </style>
 </head>
