@@ -6,42 +6,86 @@
     <title>班级百科 - 十二班班级百科主页</title>
     <style>
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
+            max-width: 1000px;
+            margin: 20px auto;
             padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex; /* 使用 flexbox 布局 */
+            flex-direction: row; /* 默认水平排列，电脑版 */
         }
+
+        /* 电脑版样式 */
+        @media (min-width: 769px) { /* 调整电脑版断点 */
+            .container {
+                flex-direction: row; /* 默认水平排列，电脑版 */
+            }
+            .image-container {
+                width: 30%; /* 图片占据左侧 30% */
+                margin-right: 20px; /* 图片和内容之间的间距 */
+            }
+            .main-content {
+                width: 70%; /* 内容占据右侧 70% */
+            }
+        }
+
+        /* 手机版样式 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* 垂直排列 */
+            }
+            .image-container {
+                width: 100%; /* 手机端图片宽度 */
+                text-align: center; /* 图片居中 */
+                margin-bottom: 20px; /* 图片和内容的间距 */
+            }
+            .main-content {
+                width: 100%;
+            }
+        }
+
         header {
             text-align: center;
             margin-bottom: 20px;
         }
+
         .logo {
-            font-size: 2.5em;
+            font-size: 2em;
             font-weight: bold;
+            color: #000;
         }
+        p {
+            font-size: 14px; /* 调整段落字体大小 */
+        }
+
         .search-bar {
-            margin: 20px 0;
+            margin: 10px 0;
             text-align: center;
-            position: relative;
         }
         .search-bar input {
-            width: 50%;
-            padding: 10px;
+            padding: 8px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
             font-size: 1em;
         }
         .search-bar button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #36c;
-            color: white;
+            padding: 8px 16px;
+            background-color: #666;
+            color: #fff;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 1em;
         }
+
         .languages {
             display: flex;
             justify-content: center;
@@ -51,160 +95,108 @@
         }
         .languages a {
             text-decoration: none;
-            color: #36c;
+            color: #666;
         }
-        .main-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+
         .section {
-            border: 1px solid #ddd;
-            padding: 15px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 15px;
         }
         .section h2 {
             margin-top: 0;
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
+            color: #000;
+            font-size: 1.5em;
         }
+
         img {
             max-width: 100%;
             height: auto;
+            display: block; /* 避免图片下方的间隙 */
+            margin: 0 auto; /* 水平居中 */
         }
+
         footer {
             text-align: center;
             margin-top: 20px;
-            padding: 20px;
-            background-color: #f8f9fa;
+            padding: 10px;
+            background-color: #eee;
+            font-size: 0.8em;
+            color: #666;
         }
+
         #search-results {
             position: absolute;
             top: 100%;
-            left: 25%;
-            width: 50%;
-            background-color: white;
-            border: 1px solid #ddd;
+            left: 15%;  /* 调整搜索结果位置 */
+            width: 70%; /* 调整搜索结果宽度 */
+            background-color: #fff;
+            border: 1px solid #ccc;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             z-index: 1000;
-            max-height: 300px;
+            max-height: 200px;
             overflow-y: auto;
             display: none;
+            border-radius: 4px;
         }
+
         #search-results a {
             display: block;
-            padding: 10px;
+            padding: 8px 12px;
             text-decoration: none;
             color: #333;
+            font-size: 0.9em;
         }
+
         #search-results a:hover {
             background-color: #f0f0f0;
         }
-        #search-results .no-result {
-            padding: 10px;
-            color: #666;
-        }
-                     .featured-image {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-            margin: 10px auto;
-        }
-        /* 关闭按钮 */
-        .close-btn {
-            background: #ff5c5c;
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 16px;
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        /* 提示框样式 */
-        .popup {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 300px;
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-            position: relative; /* 让关闭按钮相对定位于提示框 */
-        }
-           .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-           }
-           /* 弹出框动画 */
-        @keyframes popupAnimation {
-            0% {
-                opacity: 0;
-                transform: scale(0.8); /* 缩小效果 */
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1); /* 回到正常大小 */
-            }
 
+        #search-results .no-result {
+            padding: 8px 12px;
+            color: #999;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header>
+        <div class="image-container">
             <img src="medias/Axolotl_Swim.gif" alt="十二班教师">
-            <div class="logo">十二班百科</div>
-            <p>一个专注于初二零二五届十二班相关事务的百科全书</p>
-        </header>
-
-
-
-        <div class="search-bar">
-            <input type="text" id="search-input" placeholder="搜索条目">
-            <div id="search-results"></div>
         </div>
 
         <div class="main-content">
+            <header>
+                <div class="logo">十二班百科</div>
+                <p>一个专注于初二零二五届十二班相关事务的百科全书</p>
+            </header>
+
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="搜索条目">
+                <div id="search-results"></div>
+            </div>
+
             <div class="section">
                 <h2>特色条目</h2>
                 <p><a href="pages/penny/" target="_blank">彭</a>(教师)(英文名：Penny；1995-)，LNBS教职工。从2022年开始担任2025届<a href="pages/shierban/" target="_blank">十二班</a>班主任，同时担任<a href="pages/shierban" target="_blank">十二班</a>英语老师，15班英语老师。彭的执政手段刚柔并济，其在家长会上自称已经建立"学生对他既怕又爱"的班级氛围。</p>
-                
-
             </div>
+
             <div class="section">
                 <h2>页面上新</h2>
-<p>我们还在不断更新中，更多页面敬请期待。<a href="pages/" target="_blank">点击</a>访问完整现有内容列表</p>
-            <ul>
+                <p>我们还在不断更新中，更多页面敬请期待。<a href="pages/" target="_blank">点击</a>访问完整现有内容列表</p>
+                <ul>
                     <li><a href="pages/kandianyinghuodong/">看电影活动</a></li>
                     <li><a href="pages/yishujie/">第二次艺术节</a></li>
                     <li><a href="pages/chengzhang/">成长手册</a></li>
                     <li><a href="pages/gongqingtuanqinxuan/">共青团团员竞选大赛</a></li>
                     <li><a href="pages/yjr/">杨J</a>（教师）</li>
-                    
-                    
-                                
-                    
-            </ul>    
+                </ul>
             </div>
-            
-                        <div class="section">
+
+            <div class="section">
                 <h2>关于我们</h2>
-<p>我们是初二零二五届班级百科的志愿者，致力于为项目提供真实、可靠的内容，并承诺绝不在网络上传播任何关于学校的不实信息。你可以向以下邮箱投稿或独立制作文章页面：📧 pry-unending-clean@duck.com，或访问（互不隶属）十二班班级百科通讯社：🔗 <a href="https://shier-12.freeforums.net/">https://shier-12.freeforums.net/</a></p>
-                        </div>
+                <p>我们是初二零二五届班级百科的志愿者，致力于为项目提供真实、可靠的内容，并承诺绝不在网络上传播任何关于学校的不实信息。你可以向以下邮箱投稿或独立制作文章页面：📧 pry-unending-clean@duck.com，或访问（互不隶属）十二班班级百科通讯社：🔗 <a href="https://shier-12.freeforums.net/">https://shier-12.freeforums.net/</a></p>
+            </div>
         </div>
     </div>
 
@@ -270,8 +262,6 @@
             { title: "成长手册", pinyin:"chengzhangshouche", url: "pages/chengzhang" },
             { title: "第二次艺术节", pinyin:"dierciyishujie", url: "pages/yishujie" },
             { title: "看电影活动", pinyin:"kandianyinghuodong", url: "pages/kandianyinghuodong" },
-    
-
         ];
 
         const searchInput = document.getElementById('search-input');
@@ -282,10 +272,10 @@
             searchResults.innerHTML = '';
 
             if (searchTerm.length > 0) {
-const matchedPages = pages.filter(page => 
-    page.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    page.pinyin.toLowerCase().includes(searchTerm.toLowerCase())
-);
+                const matchedPages = pages.filter(page =>
+                    page.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    page.pinyin.toLowerCase().includes(searchTerm.toLowerCase())
+                );
 
                 if (matchedPages.length > 0) {
                     matchedPages.forEach(page => {
@@ -307,6 +297,7 @@ const matchedPages = pages.filter(page =>
                 searchResults.style.display = 'none';
             }
         });
+
         document.addEventListener('click', function(e) {
             if (e.target !== searchInput && e.target !== searchResults) {
                 searchResults.style.display = 'none';
