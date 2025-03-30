@@ -61,7 +61,7 @@
         }
         .main-content {
             display: flex;
-            flex-direction: column; /* 手机版垂直排列 */
+            flex-direction: column; /* 默认垂直排列，手机版 */
             gap: 20px;
         }
         .section {
@@ -80,7 +80,7 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0 auto 10px; /* 图片居中并添加底部间距 */
+            margin: 0 auto 20px; /* 图片居中并添加底部间距 */
         }
         footer {
             text-align: center;
@@ -121,13 +121,12 @@
             .main-content {
                 flex-direction: row;
             }
-            .section {
-                width: calc(50% - 10px); /* 两个section平分，并留出间隙 */
-            }
             img {
-                float: left;
-                margin-right: 20px;
-                margin-bottom: 0; /* 移除底部间距，因为图片会在左侧 */
+                width: 30%; /* 图片占据30%宽度 */
+                margin-right: 20px; /* 图片右边距 */
+            }
+            .section {
+                width: calc(70% - 20px); /*  内容区域占70%，减去图片右边距*/
             }
         }
     </style>
@@ -145,7 +144,7 @@
         </div>
 
         <div class="main-content">
-            <img src="medias/Axolotl_Swim.gif" alt="十二班教师" style="width:100%; max-width:300px; margin: 0 auto 20px;">
+            <img src="medias/Axolotl_Swim.gif" alt="十二班教师">
 
             <div class="section">
                 <h2>特色条目</h2>
