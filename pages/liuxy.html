@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级百科 - 班级流行语</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #202122;
+            font-size: 14px;
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+        .header-content {
+            max-width: 960px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            text-decoration: none;
+        }
+        .search-bar {
+            display: flex;
+        }
+        .search-bar input {
+            padding: 6px;
+            border: 1px solid #a2a9b1;
+            border-right: none;
+            border-radius: 2px 0 0 2px;
+            width: 200px;
+        }
+         .section {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .section h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        
+        .search-bar button {
+            padding: 6px 12px;
+            background-color: #36c;
+            color: white;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        h2 {
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 3px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        h3 {
+            font-size: 18px;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: none; /* 移除h3下方的线段 */
+        }
+        h4 {
+            font-size: 16px;
+            border-bottom: none;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .toc ul ul {
+            padding-left: 20px;
+        }
+        .toc a {
+            color: #0645ad;
+            text-decoration: none;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 10px 0;
+            font-size: 13px;
+        }
+        th, td {
+            border: 1px solid #a2a9b1;
+            padding: 6px;
+        }
+        th {
+            background-color: #eaecf0;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        .infobox {
+            float: right;
+            margin: 0 0 15px 15px;
+            border: 1px solid #a2a9b1;
+            padding: 8px;
+            background-color: #f8f9fa;
+            width: 270px;
+            font-size: 13px;
+        }
+        .infobox h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .infobox img {
+            display: block;
+            margin: 0 auto;
+            max-width: 250px;
+        }
+        .uninfobox {
+            float: left;
+            margin: 15px 15px 0 0;
+            border: 1px solid #a2a9b1;
+            padding: 8px;
+            background-color: #f8f9fa;
+            width: 270px;
+            font-size: 13px;
+        }
+        .uninfobox img {
+            display: block;
+            margin: 0 auto;
+            max-width: 250px;
+        }
+        .footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #a2a9b1;
+            padding: 15px 0;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #72777d;
+        }
+        @media (max-width: 768px) {
+            .infobox {
+                float: none;
+                width: 100%;
+                margin: 15px 0;
+            }
+            .header-content {
+                flex-direction: column;
+            }
+            .search-bar {
+                margin-top: 10px;
+            }
+                .toc {
+            background-color: #f8f9fa;
+            border: 1px solid #a2a9b1;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        .toc h2 {
+            margin-top: 0;
+            font-size: 20px;
+            border-bottom: none;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面内容保持不变 -->
+    <div class="header">
+        <div class="header-content">
+            <a href="https://newwiki-github-io.pages.dev/" class="logo">12班班级百科</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>班级流行语</h1>
+        
+
+        <p>班级流行语是一种在<a href="https://shierban-github-io.pages.dev/">十二班</a>流行的文化现象，通常是指在班级出现的、被人们广泛传播和接受的一种语言或行为元素。流行语通常具有轻松幽默的特点，可以被学生们用作调侃或娱乐。</p>
+
+        <div class="toc">
+            <h2>目录</h2>
+            <ul>
+                <li><a href="#section1">1. 第一学期</a>
+                    
+                </li>
+                <li><a href="#section2">2. 第二学期</a>
+                    
+                </li>
+                <li><a href="#section3">3. 第三学期</a>
+                   
+                </li>
+                
+            </ul>
+        </div>
+
+        <h2 id="section1">1. 第一学期</h2>
+        <p></p>
+        <div class="section">
+        <h2>3311</h2>
+        <p>早期，朱Y（学生）英语考试只考了33分，听写只考了11分。分数极低以至于刷新了同学们的眼界。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“我筷子呢？我可是有底线的”</h2>
+        <p>出自刘Q（学生）。秦P（学生）和赵H（学生）与刘Q（学生）在食堂因为恶作剧发生矛盾：赵H（学生）将刘Q（学生）的一次性筷子放在了座椅下。刘Q（学生）在发现筷子不见后，怒喊到：“我筷子呢？我可是有底线的！”因其反应过于夸张，此事很快便在班内流行下来。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>抱抱（爆爆）</h2>
+        <p>源自早期心理课上播放的视频，主人公名字为“抱抱”，其谐音为“爆爆”。吴Y（学生）在初一上多次和同学提起“爆爆”，该词也被认定为吴Y（学生）的口头禅和标志词。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“懂哥”</h2>
+        <p>同学们在早期对程Y（学生）的称呼。在早期“<a href="https://fsi-github-io.pages.dev/">F4男团</a>”内流行。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>医生；爱信不信</h2>
+        <p>出自刘Q（学生）。刘Q（学生）在与赵H（学生）和秦P（学生）交谈的过程中说到：“医生可以检查病人的全身”。刘Q（学生）一开始是说这是从他小学同学了解到的知识，后来又改口说是看科普视频了解到的，赵H（学生）和秦P（学生）对信息来源多次发出疑问。最终，刘Q（学生）生气地回应到：“爱信不信！”</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>屑花（雪花）</h2>
+        <p>原指头皮屑。早期刘Q（学生）因不太讲究卫生而被同学调侃。后来<a href="https://penny-github-io-7sf.pages.dev/">彭老师</a>批评了过分玩梗的同学。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“P城有个锁血挂，我很菜的”</h2>
+        <p>源于<a href="https://xinguanwangke-github-io.pages.dev/">网课期间</a>的<a href="https://youxikaimai-github-io.pages.dev/">游戏开麦事件</a>。朱Y（学生）在网课学习期间的英语课违纪玩游戏《和平精英》时忘记关麦。导致朱Y（学生）对游戏内队友说的话被全班听见。被发现后，场面一度陷入尴尬。朱Y也在事后被批评。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>武隆</h2>
+        <p>源自田X（学生）在钉钉里学习小组的发言：“我在武隆，不在重庆。”群内学生普遍认为该语句逻辑出现错误（重庆涵盖武隆）。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“给脸不要脸。”</h2>
+        <p>早期田X（学生）常说的口头禅，用于回怼她不满的人，后被同学模仿。流行于“<a href="https://fantian-github-io.pages.dev/">反田联盟</a>”。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>PYY</h2>
+        <p>原指曹B（学生）小学同学浦Y的名称简写。有学生发现PYY与庞Y（学生）名称首字母吻合，之后演变为庞Y（学生）的别称。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“对不对？”</h2>
+        <p><a href="https://hurq-github-io.pages.dev/">胡</a>（教师）的口头禅之一。据学生统计，<a href="https://hurq-github-io.pages.dev/">胡</a>（教师）在课堂上说“对不对”最高记录的次数高达六十多次，平均也不低于三十次。除此之外，<a href="https://hurq-github-io.pages.dev/">胡</a>（教师）的口头禅还包括：宝贝们、耳朵、也就换句话说、是不是等等。<a href="https://hurq-github-io.pages.dev/">胡</a>（教师）的手机偶尔会在语文课响铃，有学生对其电话铃声的旋律印象深刻。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“习大大”</h2>
+        <p><a href="https://yjr.pages.dev/">杨J</a>（教师）在政治课多次引用国家主席习近平的言论，并称其为“习大大”。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>破防了</h2>
+        <p>出自曹B（学生）、秦P（学生）和赵H（学生）在与刘J（学生）的矛盾（<a href="https://liuzhaochongtu-github-io.pages.dev/">刘赵冲突</a>）。曹B（学生）表示刘J（学生）总是在骂战中显得急躁，总是调侃其为“破防了”</p>
+        </div>
+        <p></p>
+        
+        
+        <div class="section">
+        <h2>弥留了吗</h2>
+        <p>源自刘J（学生）在手表好友圈发布的动态。有学生认为该动态造句有问题且不通顺，意义不明。在之后一些同学因过度玩此梗被<a href="https://penny-github-io-7sf.pages.dev/">彭</a>批评。</p>
+        </div>
+        <p></p>
+        
+        <div class="section">
+        <h2>我会做到的！</h2>
+        <p>源自刘J（学生）在电话手表的一条好友圈，内容大致为“残酷的童年，没有家教的人太多了。我会让那些嘲笑我的人，闲事的人都去战场，不能回家，都给我去S。我会做到的！”由于语言太过极端，班内有多名同学背地吐槽。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>诶，dogdog～</h2>
+        <p>刘J（学生）对程Y（学生）的称呼。因意义不明而流传至全班。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>搭飞机</h2>
+        <p>源于<a href="https://shengwukefeiji-github-io.pages.dev/">生物课飞机事件</a>，陈X（学生）在生物课开黄腔。生物老师被陈X（学生）的低俗言行激怒，随后对<a href="https://shierban-github-io.pages.dev/">十二班</a>进行批评和惩罚。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>低俗烂梗</h2>
+        <p>人民网评“鸡你太美”是低俗烂梗。<a href="https://penny-github-io-7sf.pages.dev/">彭</a>在一次讲话中认同了人民网的观点，对部分玩梗学生进行了批评。之后，其本人疑似在英语课玩梗，有同学称其区别对待。</p>
+        </div>
+        
+        <p></p>
+        <div class="section">
+        <h2>五星难度；登顶了</h2>
+        <p><a href="https://myp-github-io.pages.dev/" target="_blank">穆</a>（教师）在数学课经常说“五星难度”和“登顶了”来形容难度顶尖的题目，其在说的同时常伴随着夸张的神态和表情。因在课堂多次提到，在班内流行。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“我看到了一坨Shi！”</h2>
+        <p>源自<a href="https://myp-github-io.pages.dev/" target="_blank">穆</a>（教师）分享的一则故事，讲述了“你内心有佛，看到的就是佛；你内心有shi，看到的就是shi”的道理。该句在日常比较冷淡的课堂中显得格外突兀。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“你们不要太小看蚂蚁了”、“零是社会进步的产物”</h2>
+        <p>这些是关于<a href="https://myp-github-io.pages.dev/" target="_blank">穆</a>（教师）对科学（或哲学）的分享。<a href="https://myp-github-io.pages.dev/" target="_blank">穆</a>对科学类事物展现出狂热的兴趣，会在数学课花大量时间进行分享。这样做有利于学生的学习热情以及专注度。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“今天的作业，一本”</h2>
+        <p><a href="https://liuzhe.pages.dev/">刘</a>（教师）在课堂结尾布置作业的固定句式。物理作业一般为《一本》练习册。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“易K（其全称），起来吧。”</h2>
+        <p>易K（学生）曾多次在物理课打瞌睡，每次都会被<a href="https://liuzhe.pages.dev/">刘</a>（教师）发现并要求其起立罚站。</p>
+        </div>
+        <p></p>
+        <h2 id="section2">2. 第二学期</h2>
+        <p></p>
+        <div class="section">
+        <h2>“你真分得清月季和玫瑰吗”</h2>
+        <p>朱Y（学生）于2023年12月在电话手表上发布好友圈。朱Y（学生）对王H（学生）痴恋地追求在班内已经广为人知。此句对象疑似是对王H（学生），因该句里夹杂着阴阳的语气且显得比较幼稚，被学生吐槽比较恶心。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>黑板反光</h2>
+        <p>田X（学生）多次打断课堂，向老师反应黑板反光，并要求拉窗帘。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>汤圆</h2>
+        <p>部分同学对伍Z（学生）的称呼。有学生认为伍Y（学生）的脸圆，又因伍Y（学生）在游戏中的形象为汤圆，因此有了此称谓。流行于“<a href="https://daituan-github-io.pages.dev/">呆呆团</a>”内部。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>幽默风趣</h2>
+        <p>地理老师对陈X（学生）的称谓。陈X（学生）经常在地理课进行幽默讲话，活跃班级气氛。并在之后被地理老师评选为地理科代表，理由是“总能在全班快睡着的时候逗全班醒”。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>绝对安静</h2>
+        <p><a href="https://myp-github-io.pages.dev/" target="_blank">穆</a>在数学晚自习要求学生保持绝对安静，讲到：“像在水里一样，不能张嘴，一张就会溺水。”</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“我们家子昂自己的学习规划。”</h2>
+        <p>源自陈Z（学生）的家长对<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）发的一段回应，是对陈Z（学生）没有按时完成学校作业的解释。<a href="https://penny-github-io-7sf.pages.dev/">彭老师</a>当着全班面读出来。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“推荐中国人死一半”</h2>
+        <p>源自曹B（学生）曾在微信群的极端政治言论。因此被部分学生批评为社会达尔文主义者。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>私人</h2>
+        <p>原指<a href="https://waihaofengbo-github-io.pages.dev/">外号风波</a>期间，<a href="https://fsi-github-io.pages.dev/">F4男团</a>部分学生曾为了挑衅王ZHuan对其的一种的代称，流行于“<a href="https://fsi-github-io.pages.dev/">F4男团</a>”。因有学生认为王ZHuan的鞋是假品牌。现指班内部分学生对曹B（学生）的称呼。学生们通常在曹B（学生）课上回答问题时发出Si的叫声表达不满。流行于“<a href="https://daituan-github-io.pages.dev/">呆呆团</a>”，后来被多位老师因此事批评。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>白色垃圾</h2>
+        <p>校级领导在周一校会上关于校园垃圾问题发表演讲。规定凡是发现有学生故意丢弃白色垃圾，年级处分处理。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“警告一次”</h2>
+        <p>谢M（学生）是清洁委员之一，若发现同学带饮料进教室便会提醒同学“警告一次”。谢M（学生）在说话的同时，手还会不自觉地捏鼻子。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“这都是常识。”</h2>
+        <p>在英语课上学习课文时，<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）提及课文中一位人物 马丁.路德.金 的著名演讲“I Have a Dream”时，询问班上有哪些人知道该演讲。因无人作出回应，<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）愤怒地说：“这都是常识，你们平时一天时间到哪去了？”</p>
+        </div>
+        <p></p>
+        
+        <div class="section">
+        <h2>“这是我们那个年代的”</h2>
+        <p><a href="https://penny-github-io-7sf.pages.dev/">彭</a>经常在课堂上分享她那个年代的节目和歌曲，但学生们多数不认识，场面尴尬。
+</p></div>
+        <p></p>
+        <div class="section">
+        <h2>蚕丝被</h2>
+        <p>源自生物课老师在课堂提到的“蚕丝被”。发音与陈S（学生）名称相似。流行于“<a href="https://daituan-github-io.pages.dev/">呆呆团</a>”和“<a href="https://pptuan-github-io.pages.dev/">PP团</a>”之间。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“不去，说好的呢。”</h2>
+        <p>刘Q（学生）在英语课后被抽中作为本节课的惩罚对象，项目为跳舞。刘Q对<a href="https://penny-github-io-7sf.pages.dev/">彭老师</a>怒喊到：“不去，说好的呢。”有学生猜测<a href="https://penny-github-io-7sf.pages.dev/">彭</a>与刘Q（学生）达成了某种协议。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>四川紫色土</h2>
+        <p>源自初二会考的地理试题，原题是一道选择题，只给了一张模糊不清的黑白图片。问图中的桥是哪里的特色，该地的土壤颜色是什么。这届地理考试比往届的都要难，校内不少同学吐槽题目超纲和反常识。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“你是中国人还是日本人？”，“你知道中国和日本什么关系吗？”，“这是原则性问题。”</h2>
+        <p>源自<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）的民族主义仇日讲话内容。<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）多次通过其作为班主任的权利，在班级公开表达。著名的事件有：蓝D（学生）使用日语道歉语句向同学道歉，<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）称“我知道了，你是在讽刺日本”；在空闲的自习课上播放讲述日本靖国神社中博物馆内的以日本军国主义为视角的对历史的陈述，<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）称“这才是正能量。”</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“不能发出声音，只能用气息说话。”</h2>
+        <p><a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）曾在背诵时间要求学生：“不能发出声音，只能用气息说话。”禁止发出声音与背诵任务相矛盾，而显得奇怪。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“我就是变态怎么了？”</h2>
+        <p>源自<a href="https://penny-github-io-7sf.pages.dev/">彭老师</a>对学生反感课余时间被占用的意见的回应，并表示：“各有各的班规。”</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>专业知识笔记本</h2>
+        <p><a href="https://zlj-github-io.pages.dev/">张</a>（教师）对语文笔记本的称呼。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“背打直，盯着我。”</h2>
+        <p><a href="https://zlj-github-io.pages.dev/">张</a>（教师）的口头禅。通常在语文课讲知识点时或对答题的人说。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“你疯了迈？”</h2>
+        <p><a href="https://zlj-github-io.pages.dev/">张</a>（教师）的口头禅，用于回应学生被抽问时的离谱回答。</p>
+        </div>
+        <p></p>
+        <h2 id="section3">3. 第三学期</h2>
+        <p></p>
+        <div class="section">
+        <h2>“今天，我很不爽！”</h2>
+        <p>王（年级主任）在开学礼堂演讲中的台词。王（年级主任）在开学第一天发现了各种违纪现象，例如有同学在宿舍违纪玩手机，有同学在高温天气户外运动，还有同学抵抗自愿返校通知（<a href="https://95shijian-github-io.pages.dev/">九五事件</a>）。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“那咋了？”</h2>
+        <p>学生田X在与同学交流时，经常敷衍地回应一句“那咋了？”，这样的态度引发了他人反感，并逐渐被多名学生模仿，最后演变成一种带有调侃意味的习惯性用语。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“所以不能谈念爱哟！”</h2>
+        <p>源自<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）在英语课上的一句发言。由于其前言不搭后语，且意义模糊，迅速在班级中引发了模仿热潮。<a href="https://penny-github-io-7sf.pages.dev/">彭</a>（教师）说出这句话，可能是为了回应某些学生疑似谈恋爱的情况，但表达方式却显得风趣又离奇。</p>
+        </div>
+        <p></p>
+        <div class="section">
+        <h2>“好少哦！”</h2>
+        <p>十三班的<a href="https://daituan-github-io.pages.dev/">呆呆团</a>成员CJ（学生）因其独特的口音将“好少哦！”说成一句妙语，却被同学幻听成“好搔哦！”</p>
+        </div>
+        <p></p>
+
+    <div class="footer">
+        <p>本页面最后编辑于2024年几月几日 (星期几) 不知道（UTC）。</p>
+        <p>本站的全部文字在知识共享 署名-相同方式共享 3.0协议之条款下提供，附加条款亦可能应用。</p>
+    </div>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
