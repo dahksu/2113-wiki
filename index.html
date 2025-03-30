@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级百科 - 十二班班级百科主页</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Lato', 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        .search-bar {
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+        .search-bar input {
+            width: 50%;
+            padding: 10px;
+            font-size: 1em;
+        }
+        .search-bar button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #36c;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .languages {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .languages a {
+            text-decoration: none;
+            color: #36c;
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .section {
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .section h2 {
+            margin-top: 0;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        #search-results {
+            position: absolute;
+            top: 100%;
+            left: 25%;
+            width: 50%;
+            background-color: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+            display: none;
+        }
+        #search-results a {
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+        }
+        #search-results a:hover {
+            background-color: #f0f0f0;
+        }
+        #search-results .no-result {
+            padding: 10px;
+            color: #666;
+        }
+                     .featured-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+        }
+        /* 关闭按钮 */
+        .close-btn {
+            background: #ff5c5c;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 16px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        /* 提示框样式 */
+        .popup {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            position: relative; /* 让关闭按钮相对定位于提示框 */
+        }
+           .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           }
+           /* 弹出框动画 */
+        @keyframes popupAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.8); /* 缩小效果 */
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1); /* 回到正常大小 */
+            }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="https://minecraft.wiki/images/Cyan_Axolotl_JE2.gif?7db23&format=original" alt="十二班教师">
+            <div class="logo">十二班百科</div>
+            <p>一个专注于初二零二五届十二班相关事务的百科全书</p>
+        </header>
+
+
+
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="搜索条目">
+            <div id="search-results"></div>
+        </div>
+
+        <div class="main-content">
+            <div class="section">
+                <h2>特色条目</h2>
+                <p><a href="https://penny-github-io-7sf.pages.dev/" target="_blank">彭</a>(教师)(英文名：Penny；1995-)，LNBS教职工。从2022年开始担任2025届<a href="https://shierban-github-io.pages.dev/" target="_blank">十二班</a>班主任，同时担任<a href="https://shierban-github-io.pages.dev/" target="_blank">十二班</a>英语老师，15班英语老师。彭的执政手段刚柔并济，其在家长会上自称已经建立"学生对他既怕又爱"的班级氛围。</p>
+                
+
+            </div>
+            <div class="section">
+                <h2>页面上新</h2>
+<p>我们还在不断更新中，更多页面敬请期待。<a href="https://wiki-github-io.pages.dev/" target="_blank">点击</a>访问完整现有内容列表</p>
+            <ul>
+                    <li><a href="https://kandianyinghuodong.pages.dev/">看电影活动</a></li>
+                    <li><a href="https://yishujie.pages.dev/">第二次艺术节</a></li>
+                    <li><a href="https://chengzhang.pages.dev/">成长手册</a></li>
+                    <li><a href="https://gongqingtuanqinxuan.pages.dev/">共青团团员竞选大赛</a></li>
+                    <li><a href="https://yjr.pages.dev/">杨J</a>（教师）</li>
+                    
+                    
+                                
+                    
+            </ul>    
+            </div>
+            
+                        <div class="section">
+                <h2>关于我们</h2>
+<p>我们是初二零二五届班级百科的志愿者，致力于为项目提供真实、可靠的内容，并承诺绝不在网络上传播任何关于学校的不实信息。你可以向以下邮箱投稿或独立制作文章页面：📧 pry-unending-clean@duck.com，十二班班级百科通讯社：🔗 <a href="https://shier-12.freeforums.net/">https://shier-12.freeforums.net/</a></p>
+                        </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>本站内容采用CC BY-SA 3.0协议授权</p>
+        <p>班级百科标志是源于minecraftwiki的图像版权为其所有</p>
+    </footer>
+
+    <script>
+        const pages = [
+            { title: "班级流行语", pinyin:"banjiliuxingyu", url: "https://liuxy-github-io.pages.dev/" },
+            { title: "彭（教师）", pinyin:"pengjiaoshi", url: "https://penny-github-io-7sf.pages.dev/" },
+            { title: "十二班", pinyin:"shierban", url: "https://shierban-github-io.pages.dev/" },
+            { title: "刘（教师）", pinyin:"liujiaoshi", url: "https://liuzhe.pages.dev/" },
+            { title: "胡（教师）", pinyin:"hujiaoshi", url: "https://hurq-github-io.pages.dev/" },
+            { title: "穆（教师）", pinyin:"mujiaoshi", url: "https://myp-github-io.pages.dev/" },
+            { title: "张（教师）", pinyin:"zhangjiaoshi", url: "https://zlj-github-io.pages.dev/" },
+            { title: "F4男团", pinyin:"fsinantuan", url: "https://fsi-github-io.pages.dev/" },
+            { title: "反田联盟", pinyin:"fantianlianmeng", url: "https://fantian-github-io.pages.dev/" },
+            { title: "呆呆团", pinyin:"daidaituan", url: "https://daituan-github-io.pages.dev/" },
+            { title: "PP团", pinyin:"pptuan", url: "https://pptuan-github-io.pages.dev/" },
+            { title: "军训", pinyin:"junxun", url: "https://junxun-github-io.pages.dev/" },
+            { title: "开开团", pinyin:"kaikaituan", url: "https://kaikaituan-github-io.pages.dev/" },
+            { title: "研学", pinyin:"yanxue", url: "https://youxue-github-io.pages.dev/" },
+            { title: "班级形象大赛", pinyin:"banjixingxiangdasai", url: "https://banjixingxiangdasai-github-io.pages.dev/" },
+            { title: "文明礼仪大赛", pinyin:"wenmingliyidasai", url: "https://wenmingliyidasai-github-io.pages.dev/" },
+            { title: "运动会", pinyin:"yundonghui", url: "https://yundonghui-github-io.pages.dev/" },
+            { title: "刘赵冲突", pinyin:"liuzhaochongtu", url: "https://liuzhaochongtu-github-io.pages.dev/" },
+            { title: "午休动乱", pinyin:"wuxiudongluan", url: "https://wuxiudongluan-github-io.pages.dev/" },
+            { title: "九五事件", pinyin:"jiuwushijian", url: "https://95shijian-github-io.pages.dev/" },
+            { title: "举报信事件", pinyin:"jubaoxinshijian", url: "https://jubaoxin-github-io.pages.dev/" },
+            { title: "反朱浪潮", pinyin:"fanzhulangchao", url: "https://fanzhulangchao-github-io.pages.dev/" },
+            { title: "同学群事件", pinyin:"tongxuequnshijian", url: "https://tongxuequnshijian-github-io.pages.dev/" },
+            { title: "生物课飞机事件", pinyin:"shengwukefeijishijian", url: "https://shengwukefeiji-github-io.pages.dev/" },
+            { title: "外号风波", pinyin:"waihaofengbo", url: "https://waihaofengbo-github-io.pages.dev/" },
+            { title: "兰（教师）", pinyin:"lanjiaoshi", url: "https://lp-github-io.pages.dev/" },
+            { title: "林（教师）", pinyin:"lanjiaoshi", url: "https://lxj-github-io.pages.dev/" },
+            { title: "学生联合会", pinyin:"xueshenglianhehui", url: "https://xslhh-github-io.pages.dev/" },
+            { title: "自习课跳绳事件", pinyin:"zixiketiaoshengshijian", url: "https://zixitiaosheng-github-io.pages.dev/" },
+            { title: "冒充事件", pinyin:"maochongshijian", url: "https://maochong-github-io.pages.dev/" },
+            { title: "爆肝事件", pinyin:"baoganshijian", url: "https://baogan-github-io.pages.dev/" },
+            { title: "蜘蛛事件", pinyin:"zhizhushijian", url: "https://zhizhu-github-io.pages.dev/" },
+            { title: "水杯事件", pinyin:"xueshenglianhehui", url: "https://shuibeildusername-github-io.pages.dev/" },
+            { title: "艺术节", pinyin:"yishujie", url: "https://yisujie-github-io.pages.dev/" },
+            { title: "拍卖会", pinyin:"paimaihui", url: "https://paimaihui-github-io.pages.dev/" },
+            { title: "阳光值", pinyin:"yangguangzhi", url: "https://yangguangzhi-github-io.pages.dev/" },
+            { title: "网课居家学习", pinyin:"wangkejujiaxuexi", url: "https://xinguanwangke-github-io.pages.dev/" },
+            { title: "游戏开麦事件", pinyin:"youxikaimaishijian", url: "https://youxikaimai-github-io.pages.dev/" },
+            { title: "家委会", pinyin:"jiaweihui", url: "https://jiaweihui.pages.dev/" },
+            { title: "抄物理作业事件", pinyin:"chaowulizuoyeshijian", url: "https://chaozuoye-github-io.pages.dev/" },
+            { title: "班主任专制", pinyin:"banzhurenzhuanzhi", url: "https://zhuanzhi-github-io.pages.dev/" },
+            { title: "班委会", pinyin:"banweihui", url: "https://banwei-github-io.pages.dev/" },
+            { title: "胡的告别", pinyin:"hudegaobie", url: "https://hulibie-github-io.pages.dev/" },
+            { title: "火锅聚餐", pinyin:"huoguojucan", url: "https://huoguojucan.pages.dev/" },
+            { title: "班级表彰大会", pinyin:"banjibiaozhangdahui", url: "https://biaozhang-github-io.pages.dev/" },
+            { title: "周五留人制度", pinyin:"zhouwuliurenzhidu", url: "https://zwlrz-github-io.pages.dev/" },
+            { title: "清洁小组轮值制度", pinyin:"qingjiexiaozhulunzhizhidu", url: "https://qingjiexiaozhulunzhi.pages.dev/" },
+            { title: "成J（教师）", pinyin:"chengjjiaoshi", url: "https://chengmou.pages.dev/" },
+            { title: "元宵节活动", pinyin:"yuanxiaojiehuodong", url: "https://yuanxiaojie.pages.dev/" },
+            { title: "共青团团员竞选大赛", pinyin:"gongqingtuantuanyuanjingxuandasai", url: "https://gongqingtuanqinxuan.pages.dev/" },
+            { title: "杨J（教师）", pinyin:"yangjjiaoshi", url: "https://yjr.pages.dev/" },
+            { title: "王L（教师）", pinyin:"wangljiaoshi", url: "https://wlh-cyx.pages.dev/" },
+            { title: "成长手册", pinyin:"chengzhangshouche", url: "https://chengzhang.pages.dev/" },
+            { title: "第二次艺术节", pinyin:"dierciyishujie", url: "https://yishujie.pages.dev/" },
+            { title: "看电影活动", pinyin:"kandianyinghuodong", url: "https://kandianyinghuodong.pages.dev/" },
+
+
+
+
+
+
+
+
+
+        ];
+
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            if (searchTerm.length > 0) {
+const matchedPages = pages.filter(page => 
+    page.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+    page.pinyin.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
+                if (matchedPages.length > 0) {
+                    matchedPages.forEach(page => {
+                        const link = document.createElement('a');
+                        link.href = page.url;
+                        link.textContent = page.title;
+                        link.target = "_blank";
+                        searchResults.appendChild(link);
+                    });
+                } else {
+                    const noResult = document.createElement('div');
+                    noResult.className = 'no-result';
+                    noResult.textContent = "无相关条目，请试试另外的关键词";
+                    searchResults.appendChild(noResult);
+                }
+
+                searchResults.style.display = 'block';
+            } else {
+                searchResults.style.display = 'none';
+            }
+        });
+        document.addEventListener('click', function(e) {
+            if (e.target !== searchInput && e.target !== searchResults) {
+                searchResults.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
